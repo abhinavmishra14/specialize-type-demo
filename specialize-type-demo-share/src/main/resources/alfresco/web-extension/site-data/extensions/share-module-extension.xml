@@ -1,0 +1,218 @@
+<extension>
+	<modules>
+		<module>
+			<id>Share_Module_Extension</id>
+			<version>1.0</version>
+			<auto-deploy>true</auto-deploy>
+
+			<configurations>
+				<config evaluator="string-compare" condition="DocumentLibrary">
+					<aspects>
+						<visible>
+						</visible>
+						<addable> <!-- defaults to visible config -->
+						</addable>
+						<removeable> <!-- defaults to visible config -->
+						</removeable>
+					</aspects>
+					<types>
+						<!-- ################## OOTB Change type webscript can handle these type changes [Start] ################## -->
+						<type name="cm:content">
+							<subtype name="demo:doc" />
+							<subtype name="demo:supportingDoc" />
+						</type>
+						<type name="cm:folder">
+							<subtype name="demo:docFolder" />
+							<subtype name="demo:supDocFolder" />
+						</type>
+						<!-- ################## OOTB Change type webscript can handle these type changes [End] ################## -->
+						
+						<!-- ################## OOTB Change type webscript can't handle these type changes as these are custom types, 
+						hence needed to extend the ootb change type webscript. 
+						Check details here: https://javaworld-abhinav.blogspot.com/2020/06/change-type-of-custom-content-types.html [Start] -->
+						
+						<type name="demo:doc">
+							<subtype name="demo:supportingDoc"/>
+						</type>
+						<type name="demo:supportingDoc">
+							<subtype name="demo:doc"/>
+						</type>
+						
+						<type name="demo:docFolder">
+							<subtype name="demo:supDocFolder"/>
+						</type>
+						<type name="demo:supDocFolder">
+							<subtype name="demo:docFolder"/>
+						</type>
+						
+						<!-- ################## OOTB Change type webscript can't handle these type changes as these are custom types, 
+						hence needed to extend the ootb change type webscript. 
+						Check details here: https://javaworld-abhinav.blogspot.com/2020/06/change-type-of-custom-content-types.html [End] -->
+					</types>
+				</config>
+			
+				<config evaluator="node-type" condition="demo:doc">
+					<forms>
+						<form>
+							<field-visibility>
+								<show id="cm:name" />
+								<show id="cm:title" />
+								<show id="cm:description" />
+								<show id="cm:taggable" force="true" />
+								<show id="cm:categories" force="true" />
+								<show id="cm:created" />
+								<show id="cm:creator" />
+								<show id="cm:modified" />
+								<show id="cm:modifier" />
+								<show id="mimetype" for-mode="view" />
+								<show id="cm:author" force="true" />
+								<show id="demo:ID" />
+							</field-visibility>
+							<appearance>
+								<field id="cm:name" />
+								<field id="cm:title" />
+								<field id="cm:description" />
+								<field id="demo:ID"/>
+								<field id="cm:taggable">
+									<control>
+										<control-param name="compactMode">true</control-param>
+										<control-param name="params">aspect=cm:taggable</control-param>
+										<control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+										<control-param name="createNewItemIcon">tag</control-param>
+									</control>
+								</field>
+								<field id="cm:categories">
+									<control>
+										<control-param name="compactMode">true</control-param>
+									</control>
+								</field>
+							</appearance>
+						</form>
+					</forms>
+				</config>
+				
+				<config evaluator="node-type" condition="demo:supportingDoc">
+					<forms>
+						<form>
+							<field-visibility>
+								<show id="cm:name" />
+								<show id="cm:title" />
+								<show id="cm:description" />
+								<show id="cm:taggable" force="true" />
+								<show id="cm:categories" force="true" />
+								<show id="cm:created" />
+								<show id="cm:creator" />
+								<show id="cm:modified" />
+								<show id="cm:modifier" />
+								<show id="mimetype" for-mode="view" />
+								<show id="cm:author" force="true" />
+								<show id="demo:supDocID" />
+							</field-visibility>
+							<appearance>
+								<field id="cm:name" />
+								<field id="cm:title" />
+								<field id="cm:description" />
+								<field id="demo:supDocID"/>
+								<field id="cm:taggable">
+									<control>
+										<control-param name="compactMode">true</control-param>
+										<control-param name="params">aspect=cm:taggable</control-param>
+										<control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+										<control-param name="createNewItemIcon">tag</control-param>
+									</control>
+								</field>
+								<field id="cm:categories">
+									<control>
+										<control-param name="compactMode">true</control-param>
+									</control>
+								</field>
+							</appearance>
+						</form>
+					</forms>
+				</config>
+				
+				<config evaluator="node-type" condition="demo:docFolder">
+					<forms>
+						<form>
+							<field-visibility>
+								<show id="cm:name" />
+								<show id="cm:title" />
+								<show id="cm:description" />
+								<show id="cm:taggable" force="true" />
+								<show id="cm:categories" force="true" />
+								<show id="cm:created" />
+								<show id="cm:creator" />
+								<show id="cm:modified" />
+								<show id="cm:modifier" />
+								<show id="mimetype" for-mode="view" />
+								<show id="cm:author" force="true" />
+								<show id="demo:docFolderID" />
+							</field-visibility>
+							<appearance>
+								<field id="cm:name" />
+								<field id="cm:title" />
+								<field id="cm:description" />
+								<field id="demo:docFolderID"/>
+								<field id="cm:taggable">
+									<control>
+										<control-param name="compactMode">true</control-param>
+										<control-param name="params">aspect=cm:taggable</control-param>
+										<control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+										<control-param name="createNewItemIcon">tag</control-param>
+									</control>
+								</field>
+								<field id="cm:categories">
+									<control>
+										<control-param name="compactMode">true</control-param>
+									</control>
+								</field>
+							</appearance>
+						</form>
+					</forms>
+				</config>
+				
+				<config evaluator="node-type" condition="demo:supDocFolder">
+					<forms>
+						<form>
+							<field-visibility>
+								<show id="cm:name" />
+								<show id="cm:title" />
+								<show id="cm:description" />
+								<show id="cm:taggable" force="true" />
+								<show id="cm:categories" force="true" />
+								<show id="cm:created" />
+								<show id="cm:creator" />
+								<show id="cm:modified" />
+								<show id="cm:modifier" />
+								<show id="mimetype" for-mode="view" />
+								<show id="cm:author" force="true" />
+								<show id="demo:supDocFolderID" />
+							</field-visibility>
+							<appearance>
+								<field id="cm:name" />
+								<field id="cm:title" />
+								<field id="cm:description" />
+								<field id="demo:supDocFolderID"/>
+								<field id="cm:taggable">
+									<control>
+										<control-param name="compactMode">true</control-param>
+										<control-param name="params">aspect=cm:taggable</control-param>
+										<control-param name="createNewItemUri">/api/tag/workspace/SpacesStore</control-param>
+										<control-param name="createNewItemIcon">tag</control-param>
+									</control>
+								</field>
+								<field id="cm:categories">
+									<control>
+										<control-param name="compactMode">true</control-param>
+									</control>
+								</field>
+								
+							</appearance>
+						</form>
+					</forms>
+				</config>
+
+			</configurations>
+		</module>
+	</modules>
+</extension>

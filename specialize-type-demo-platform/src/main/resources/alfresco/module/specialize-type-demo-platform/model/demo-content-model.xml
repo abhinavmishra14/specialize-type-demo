@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="demo:model" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+	<description>This model is an example of custom content model</description>
+	<author>Abhinav</author>
+	<version>1.0</version>
+
+	<!-- Imports are required to allow references to definitions in other models -->
+	<imports>
+		<!-- Import Alfresco Dictionary Definitions -->
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<!-- Import Alfresco System Model Definitions -->
+   	    <import uri="http://www.alfresco.org/model/system/1.0" prefix="sys"/>
+		<!-- Import Alfresco Content Domain Model Definitions -->
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+	</imports>
+
+	<namespaces>
+		<namespace uri="http://www.github.com/abhinavmishra14/model/demo/1.0" prefix="demo" />
+	</namespaces>
+	
+	<types>		
+		<type name="demo:doc">
+			<title>Document</title>
+			<description>Some description</description>
+			<parent>cm:content</parent>
+			<properties>
+				<property name="demo:ID">
+					<title>Doc ID</title>
+					<description>ID of the document</description>
+					<type>d:text</type>
+				</property>
+			</properties>
+		</type>
+		
+		<type name="demo:supportingDoc">
+			<title>Supporting document</title>
+			<description>Some description</description>
+			<parent>cm:content</parent>
+			<properties>
+				<property name="demo:supDocID">
+					<title>Doc ID</title>
+					<description>ID of the document</description>
+					<type>d:text</type>
+				</property>
+			</properties>
+		</type>
+		
+		
+		<type name="demo:docFolder">
+			<title>Document Folder</title>
+			<description>Some description</description>
+			<parent>cm:folder</parent>
+			<properties>
+				<property name="demo:docFolderID">
+					<title>Doc Folder ID</title>
+					<description>ID of the folder</description>
+					<type>d:text</type>
+				</property>
+			</properties>
+		</type>
+		
+		<type name="demo:supDocFolder">
+			<title>Supporting Document Folder</title>
+			<description>Some description</description>
+			<parent>cm:folder</parent>
+			<properties>
+				<property name="demo:supDocFolderID">
+					<title>Supporting Doc Folder ID</title>
+					<description>ID of the supporting doc folder</description>
+					<type>d:text</type>
+				</property>
+			</properties>
+		</type>
+	</types>
+
+</model>	
