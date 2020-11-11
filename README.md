@@ -31,21 +31,17 @@ All the services of the project are now run as docker containers. The run script
  `integration-tests` module and stop the environment.
  * `test`. Execute the integration tests (the environment must be already started).
 
-# Few things to notice
-
- * No parent pom
- * No WAR projects, the jars are included in the custom docker images
- * No runner project - the Alfresco environment is now managed through [Docker](https://www.docker.com/)
- * Standard JAR packaging and layout
- * Works seamlessly with Eclipse and IntelliJ IDEA
- * JRebel for hot reloading, JRebel maven plugin for generating rebel.xml [JRebel integration documentation]
- * AMP as an assembly
- * Persistent test data through restart thanks to the use of Docker volumes for ACS, ASS and database data
- * Integration tests module to execute tests against the final environment (dockerised)
- * Resources loaded from META-INF
- * Web Fragment (this includes a sample servlet configured via web fragment)
-
-# TODO
-
-  * Abstract assembly into a dependency so we don't have to ship the assembly in the archetype
-  * Functional/remote unit tests
+- Examples:
+  - Create a rule via manage rules:
+    <p align="left">
+       <br/>
+       <img src="samples/SpecializeType-Via-Rule.PNG">
+       <br/>
+    </p>
+  - Change type from a content or folder:
+    <p align="left">
+       <br/>
+       <img src="samples/Specialize-or-change-type-action-on-folder.png">
+       <img src="samples/Specialize-or-change-type-action.png" width="1000" height="500">
+       <br/>
+    </p>
